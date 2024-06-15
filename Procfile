@@ -1,1 +1,1 @@
-web: gunicornc back.wsgi
+web: gunicorn back.wsgi
