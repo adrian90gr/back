@@ -1,5 +1,7 @@
-from corsheaders.defaults import default_headers  # Asegúrate de importar default_headers
+from corsheaders.defaults import default_headers  
 from datetime import timedelta
+import pymysql
+pymysql.install_as_MySQLdb()
 
 
 
@@ -97,6 +99,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'back.wsgi.application'
 
+
+pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
