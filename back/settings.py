@@ -1,10 +1,5 @@
-from corsheaders.defaults import default_headers  # Asegúrate de importar default_headers
+from corsheaders.defaults import default_headers
 from datetime import timedelta
-
-
-
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,12 +12,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'users',
-    'estaciones', 
+    'estaciones',
     'vehiculos',
     'valoraciones'
 ]
 
-SECRET_KEY="12334"
+SECRET_KEY = "12334"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -30,11 +25,11 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH_USER_MODEL = 'users.Usuario' 
+AUTH_USER_MODEL = 'users.Usuario'
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
@@ -44,45 +39,33 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-   
 ]
 
-
-DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  
-
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
-    "back-b1i4.onrender.com",
-    "chargeup-production.up.railway.app"
+    "https://chargeup-production.up.railway.app"
 ]
 
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'access-control-allow-credentials',
-    'content-type',
-    'authorization',
-    'x-csrftoken',
+ALLOWED_HOSTS = [
+    'back-b1i4.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    'chargeup-production.up.railway.app'
 ]
-
-ALLOWED_HOSTS = ['back-b1i4.onrender.com', 'localhost', '127.0.0.1','chargeup-production.up.railway.app']
-
 
 CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_HEADERS = '*'
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'Authorization',
@@ -133,8 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 DEBUG = True
 
