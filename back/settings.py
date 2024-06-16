@@ -63,6 +63,9 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'x-csrftoken',
 ]
 
+ALLOWED_HOSTS = ['back-b1i4.onrender.com', 'localhost', '127.0.0.1']
+
+
 CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
